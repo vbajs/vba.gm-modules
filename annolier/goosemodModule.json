@@ -1,0 +1,13 @@
+{
+    "main": "index.js",
+  
+    "name": "Annoiler",
+    "description": "Makes you send messages with spoilers around every single character. Originally made by Kyza for Powercord",
+  
+    "tags": ["Fun"],
+  
+    "authors": ["247403343742369794", "220584715265114113"],
+  
+    "version": "1.0.0"
+  }
+  
