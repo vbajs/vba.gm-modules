@@ -1,7 +1,7 @@
 {
   "main": "index.js",
 
-  "name": "RickRoller",
+  "name": "RickRollar",
   "description": "Turns every video into a rickroll",
 
   "tags": ["Fun"],
