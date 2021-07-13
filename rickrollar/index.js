@@ -9,8 +9,6 @@ let Settings = {
     YT_EMBED_URL: 'https://www.youtube.com/embed/o-YBDTqX_ZU',
 };
 
-let ytAutoplay = Settings.YT_EMBED_URL + '?autoplay=1&auto_play=1';
-
 
 export default {
     goosemodHandlers: {
@@ -31,8 +29,8 @@ export default {
                     const element = embed[i];
                     const embedlink = element.getAttribute('src');
                     // Same second reason as above and to insure it only injects to only youtube embeds
-                    if (embedlink.startsWith('https://www.youtube.com') && embedlink != ytAutoplay) {
-                        element.setAttribute('src', ytAutoplay)
+                    if (embedlink.startsWith('https://www.youtube.com') && embedlink != (Settings.YT_EMBED_URL + '?autoplay=1&auto_play=1')) {
+                        element.setAttribute('src', Settings.YT_EMBED_URL)
                     };
                 };
             });
