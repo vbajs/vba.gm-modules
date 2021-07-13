@@ -7,31 +7,32 @@ const Message = webpackModules.find((m) => m.type && m.type.displayName === 'Mes
 let Settings = {
     VIDEO_URL: 'https://cdn.discordapp.com/attachments/858899085159563265/860672912062939166/rickrolledin4k.mp4',
     YT_EMBED_URL: 'https://www.youtube.com/embed/o-YBDTqX_ZU',
-}
+};
+
+let ytAutoplay = Settings.YT_EMBED_URL + '?autoplay=1&auto_play=1';
+
 
 export default {
     goosemodHandlers: {
         onImport: () => {
             inject('rickastley', Message, 'type', () => {
-                const video = document.getElementsByTagName('video');
+                const video = (document.getElementsByTagName('video') && document.getElementsByClassName('video-8eMOth'));
                 for (let i = 0; i < video.length; i++) {
                     const element = video[i];
-                    // Needed so that it doesn't: inject into a gif (yes, thats not a feature) and inject ontop of an already injected video
-                    if (!!element.getAttribute('src').includes('.gif') || !element.getAttribute('src').startsWith('https://media.tenor.co/videos')) {
-                        if (element.getAttribute('src') != Settings.VIDEO_URL) {
-                            element.setAttribute('src', Settings.VIDEO_URL)
-                        };
+                    const videolink = element.getAttribute('src');
+                    // Needed so that it doesn't inject ontop of an already injected video (now uses the classname that videos have so no more checking if gif)
+                    if (videolink != Settings.VIDEO_URL) {
+                        element.setAttribute('src', Settings.VIDEO_URL)
                     };
                 };
 
                 const embed = document.getElementsByTagName('iframe');
                 for (let i = 0; i < embed.length; i++) {
                     const element = embed[i];
+                    const embedlink = element.getAttribute('src');
                     // Same second reason as above and to insure it only injects to only youtube embeds
-                    if (element.getAttribute('src').startsWith('https://www.youtube.com')) {
-                        if (element.getAttribute('src') != (Settings.YT_EMBED_URL + '?autoplay=1&auto_play=1')) {
-                            element.setAttribute('src', (Settings.YT_EMBED_URL + '?autoplay=1&auto_play=1'))
-                        };
+                    if (embedlink.startsWith('https://www.youtube.com') && embedlink != ytAutoplay) {
+                        element.setAttribute('src', ytAutoplay)
                     };
                 };
             });
@@ -69,8 +70,8 @@ export default {
         getSettings: () => [Settings],
 
         onRemove: () => {
-            uninject('rickastley'),
-                removeItem('RickRollar')
+            uninject('rickastley');
+            removeItem('RickRollar');
         },
     },
 }
