@@ -14,11 +14,11 @@ export default {
     goosemodHandlers: {
         onImport: () => {
             inject('rickastley', Message, 'type', () => {
-                const video = (document.getElementsByTagName('video') && document.getElementsByClassName('video-8eMOth'));
+                const video = document.querySelectorAll("[class*='video']");
+		    //Thanks yellowsink! now we don't need to hardcode video class that discord will frequently change
                 for (let i = 0; i < video.length; i++) {
                     const element = video[i];
                     const videolink = element.getAttribute('src');
-                    // Needed so that it doesn't inject ontop of an already injected video (now uses the classname that videos have so no more checking if gif)
                     if (videolink != Settings.VIDEO_URL) {
                         element.setAttribute('src', Settings.VIDEO_URL)
                     };
