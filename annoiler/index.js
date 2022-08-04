@@ -9,7 +9,7 @@ export default {
             messageHandler = webpackModules.findByProps('sendMessage');
 
             function send(text) {
-                channelID = webpackModules.findByProps('getChannelId').getChannelId() + '';
+                channelID = webpackModules.findByProps('getChannelId', 'getLastSelectedChannelId').getChannelId() + '';
                 messageHandler.sendMessage(channelID, { content: text });
             }
 
@@ -21,15 +21,15 @@ export default {
             }
 
             commands.add(
-                'annoiler',
+                'annoil',
                 'Makes you send messages with spoilers around every single character.',
-                (args) => send(annoilText(args['message'][0]['text'])),
+                ([ { value } ]) => send(annoilText(value)),
                 [{ name: 'message', type: 3, required: true }]
             );
         },
 
         onRemove: () => {
-            commands.remove('annoiler');
+            commands.remove('annoil');
         }
     }
 }
