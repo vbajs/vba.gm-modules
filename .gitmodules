@@ -1,0 +1,3 @@
+[submodule "hjonk"]
+	path = hjonk
+	url = git@github.com:vbajs/hjonk.git
