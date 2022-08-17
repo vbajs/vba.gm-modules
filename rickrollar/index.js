@@ -66,6 +66,7 @@ export default {
         },
 
         getSettings: () => [Settings],
+        loadSettings: ([_Settings]) => {Settings = _Settings},
 
         onRemove: () => {
             uninject('rickastley');
