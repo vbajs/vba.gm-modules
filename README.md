@@ -1,3 +1,9 @@
+# Archived
+## All the modules available in this repo will no longer get updated nor support, due to GooseMod being EOL as of September 27th. See [the Goosenest discord server](https://discord.com/invite/neMncS2) for more details.
+
+<details>
+  <summary><h2>Old README</h2></summary>
+
 # vba.gm-modules
 > All [GooseMod](https://goosemod.com) modules made by vbajs
 
